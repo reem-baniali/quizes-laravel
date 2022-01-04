@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Models\Exam;
+use App\Models\Question;
 use Illuminate\Http\Request;
-
 class AnswerController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class AnswerController extends Controller
      */
     public function index()
     {
-        //
+      
+
     }
 
     /**
@@ -33,12 +35,48 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $answer = Answer::all();
-        
-    }
+        //     $this->validate($request,[
+        //     'user_answer'        =>'required|max:1500',
+        //     'exam_id'            =>'required|max:11',
+        //     'user_id'            =>'required|max:11',
+        //     'question_id'        =>'required|max:11',
 
+        // ]);
+      $user_score_per_question=0;
+      $final_exam_score=0;    
+     foreach ($request->except('_token') as $input_question_id => $user_answer) {
+         
+
+        Answer::create([
+            'user_answer'         =>$user_answer,
+            'exam_id'             =>$id,
+            'user_id'             =>auth()->user()->id,
+            'question_id'         =>$input_question_id
+         ]);
+
+         $questions=Question::all();
+         foreach($questions as $question){
+
+            if ($input_question_id === $question->id){
+              $final_exam_score += $question->points;
+
+             if ($user_answer === $question->correct_answer ){
+                $user_score_per_question += $question->points;
+
+         };
+              }
+       
+         }
+         $select_exam=Exam::find($id);
+         $max_questions=$select_exam->number_of_questions;
+         $user_answers = Answer::where('exam_id',$id)->where('user_id',auth()->user()->id)->latest()->take($max_questions)->get();
+    }
+    //  echo $user_score_per_question."<br>";
+    //  echo $final_exam_score."<br>";
+     return view('publicSite.result',compact('user_score_per_question','final_exam_score','questions','user_answers'));
+    }
     /**
      * Display the specified resource.
      *

@@ -28,20 +28,28 @@
     color: #ff8c00;
 
   }
+  #start-exam{
+    background-color:#f99821;
+    color: white;font-weight: 500;
+    margin-left: 19%;
+  }
+  #start-exam:hover{
+    background-color: #ff8c00;
+  }
 
 </style>
 <section class="ftco-section ">
   <div class="container" id="categories_container" >
     {{-- title dive --}}
       <div class="row justify-content-center mb-5 pb-2">
-<div class="col-md-8  heading-section ftco-animate">
-  <h4 id="mainText" class="mb-2 mt-3"><strong>{{ $singleCategory ->name }}</strong> <span>Exams</span></h4>
+<div class="col-md-8  heading-section ftco-animate" style="width:57% !important">
+  <h4 id="mainText" class="mb-2 mt-3"><strong>{{  $singleCategory ->name }}</strong> <span>Exams</span></h4>
   {{-- <p>Separated they live in. A small river named Duden flows 
     by their place and supplies it with the necessary regelialia. 
     It is a paradisematic country</p> --}}
     <div class="page_link">
       <a href="{{ route('index') }}">Home</a>
-      <a href="{{ route('show_categories') }}">/ categories</a>
+      <a href="{{ route('show_categories') }}">/ Exams</a>
   
       <a href={{ route('single_category',$singleCategory ->id) }}>/ {{ $singleCategory ->name }}</a>
     
@@ -59,10 +67,13 @@
       </div>
       <div class="widgets_inner">
         <ul class="list">
+         <li class="category-title page_link" style="font-size:18px">
+          <a href="{{ route('show_categories') }}"> All Exams </a></li>
+
           @foreach ($categories as $category)
             <li class="category-title page_link" style="font-size:18px">
                <a href="{{ route('single_category',$category->id )}}">
-                {{ $category->name }}</a>
+                {{ $category->name }} Exams</a>
             </li>
             @endforeach
         </ul>
@@ -75,14 +86,14 @@
 {{-- main content --}}
 <div class="col-10 d-flex justify-content-center gap-5">
   @foreach ($singleCategory->exam as $exam)
-  <div class="col-4" style="max-width: fit-content; overflow:hidden">
-  <div class="card" style="width: 18rem; ">
-    <img height="250px" src="{{ asset($exam->image) }}" class="card-img-top" alt="Company-logo">
+  <div class="col-3" style="max-width: fit-content; overflow:hidden">
+  <div class="card" style="width: 16rem; ">
+    <img height="150px" src="{{ asset($exam->image) }}" class="card-img-top" alt="exam-image">
     <div class="card-body">
       <h5 class="card-title">{{ $exam->name }}</h5>
       <p class="card-text text-truncate">{{ $exam->time_estimation }}</p>
        <p class="card-text text-truncate">{{ $exam->number_of_questions }}</p>
-      <a href="{{ route('single_exam',$exam->id) }}" class="btn btn-primary">Get Started </a>
+      <a href="{{ route('single_exam',$exam->id) }}" id="start-exam" class="btn ">Get Started </a>
     </div>
   </div>
 </div>

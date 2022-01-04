@@ -18,7 +18,7 @@
                                         <div class="card-header">Manage Exam</div>
                                         <div class="card-body card-block">
                                             <form action="@if($update==false){{ route('exam.store') }} @else {{ route('exam.update',$exam->id) }}@endif" 
-                                                method="post" enctype="multipart/form-data" >
+                                                method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="input-group">
@@ -59,8 +59,8 @@
                                                         </div>
                                                         <input type="file" id="exam_image" 
                                                         name="image"  class="form-control"
-                                                        placeholder="number of questions"
-                                                        value="@if($update == true){{ $exam->image }}@endif">
+                                                        placeholder="exam_image"
+                                                        value="">
                                                     </div>
                                                 </div>
 

@@ -20,7 +20,7 @@ class CategoryController extends Controller
       // $user=Auth::user();
       // return $user->role;
       $categories=Category::all();
-      $exams = Exam::paginate(3);
+      $exams = Exam::paginate(6);
        return view('publicSite.allCategories',compact('categories','exams'));
     }
 

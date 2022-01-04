@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -77,11 +78,11 @@ Route::get('/admin/manageResult', function () {
     return view('adminSite.manageResult');
 })->name('manageResult');
 
-//categories public site
+//public site
 Route::get("/show_categories", [CategoryController::class,'index'])->name('show_categories');
 Route::get('/category_show/{id}', [ExamController::class, 'show'])->name('single_category');
-Route::get('/exam_show/{id}', [ExamController::class, 'index'])->name('single_exam');
-Route::post('/user_answer', [ExamController::class, 'store'])->name('answer.store');
+Route::get('/exam_show/{id}', [ExamController::class, 'index'])->name('single_exam')->middleware('auth');
+Route::post('/user_answer/{id}', [AnswerController::class, 'store'])->name('answer.store');
 
 
 //category route

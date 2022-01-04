@@ -1,3 +1,5 @@
+
+
 @extends('publicSite.layouts.master')
 @section('content')
     <div class="home-content">

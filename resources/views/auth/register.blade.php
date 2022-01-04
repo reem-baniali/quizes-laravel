@@ -8,7 +8,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
-                         <input type="hidden" value="2">
+                         <input type="hidden" name="role_id" value="2">
                         @csrf
                        
                         <div class="row mb-3">
