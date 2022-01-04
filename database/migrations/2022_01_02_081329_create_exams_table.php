@@ -16,7 +16,7 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('image')->nullable();
+            $table->text('image');
             $table->string('time_estimation');
             $table->integer('number_of_questions');
             $table->foreignId('category_id')

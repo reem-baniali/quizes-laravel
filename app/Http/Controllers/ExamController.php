@@ -69,12 +69,17 @@ class ExamController extends Controller
             $file->move('storage/category_images/',$new_file);
 
           };
+        //   if (request('image')) {
+        //     $request['image']= request('image')->store('images');
+        // }
+
         Exam::create([
             'title'               =>$request->title,
+            'image'               =>'storage/category_images/'.$new_file,
             'time_estimation'     =>$request->time_estimation,
             'number_of_questions' =>$request->number_of_questions,
-            'category_id'         =>$request->category_id,
-            "image"               => 'storage/category_image/' . $new_file
+            'category_id'         =>$request->category_id
+            
 
          ]);
          return redirect()->back();  

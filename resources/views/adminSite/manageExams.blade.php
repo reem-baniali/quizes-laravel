@@ -17,8 +17,10 @@
                                     
                                         <div class="card-header">Manage Exam</div>
                                         <div class="card-body card-block">
-                                            <form action="@if($update==false){{ route('exam.store') }} @else {{ route('exam.update',$exam->id) }}@endif" 
-                                                method="post" enctype="multipart/form-data">
+                                            <form action="@if($update==false){{ route('exam.store') }} 
+                                                         @else {{ route('exam.update',$exam->id) }}@endif" 
+                                                          method="post" 
+                                                          enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-group">
                                                     <div class="input-group">
@@ -126,7 +128,7 @@
                                           <td> {{ $category->name }}</td>
                                           @endif
                                            @endforeach
-                                           <td><img src="{{  $exam->image }}" alt="exam-img"></td>
+                                           <td><img src="{{ asset( $exam->image )}}" alt="exam-img"></td>
                                             <td>{{ $exam->title }}</td>
                                             <td>{{ $exam->number_of_questions }} questions</td>
                                             <td>{{ $exam->time_estimation }} minutes</td>

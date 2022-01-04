@@ -72,7 +72,6 @@ class CategoryController extends Controller
           Category::create([
             "name"=>$request->name,
             "image"=>'storage/category_images/'.$new_file
-
          ]);
            
           return redirect()->back();  

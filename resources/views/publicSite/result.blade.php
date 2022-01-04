@@ -8,14 +8,13 @@
       
  
 @if ($question->id === $answer->question_id)
-  <h1>question text :{{  $question->text  }}</h1>
-    <h5> user_answer{{ $answer->user_answer }}</h5>
-     <h5>correct_answer :{{  $question->correct_answer }}</h5>
+  <h1>question text : {{  $question->text  }}</h1>
+    <h5> user_answer : {{ $answer->user_answer }}</h5>
+     <h5>correct_answer : {{  $question->correct_answer }}</h5>
 
 @endif
  @endforeach: 
 @endforeach
-<h1>result</h1>
 
 
 @endsection
