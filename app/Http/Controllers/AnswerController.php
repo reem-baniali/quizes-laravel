@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Exam;
+use App\Models\Result;
 use App\Models\Question;
 use Illuminate\Http\Request;
 class AnswerController extends Controller
@@ -45,7 +46,8 @@ class AnswerController extends Controller
 
         // ]);
       $user_score_per_question=0;
-      $final_exam_score=0;    
+      $final_exam_score=0; 
+       $is_pass=0;   
      foreach ($request->except('_token') as $input_question_id => $user_answer) {
          
 
@@ -73,9 +75,16 @@ class AnswerController extends Controller
          $max_questions=$select_exam->number_of_questions;
          $user_answers = Answer::where('exam_id',$id)->where('user_id',auth()->user()->id)->latest()->take($max_questions)->get();
     }
-    //  echo $user_score_per_question."<br>";
-    //  echo $final_exam_score."<br>";
-     return view('publicSite.result',compact('user_score_per_question','final_exam_score','questions','user_answers'));
+    Result::create([
+             'result'             =>$user_score_per_question,
+             'exam_id'             =>$id,
+             'user_id'             =>auth()->user()->id,
+    ]);
+   
+        if($user_score_per_question > $final_exam_score/2){
+            $is_pass=1;
+        };
+     return view('publicSite.result',compact('user_score_per_question','final_exam_score','questions','user_answers','is_pass'));
     }
     /**
      * Display the specified resource.

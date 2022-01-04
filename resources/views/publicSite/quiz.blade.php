@@ -3,13 +3,15 @@
 <style>
   #categories_container{
    background-color: #fef4e8;
-   width: 100%
+   width: 100%;
+  
   }
   #mainText,#mainText2 {
     font-family: 'Scheherazade New', serif;
     color: #20325a;
     font-size: 30px;
     margin-bottom: 20px;
+     
   }
   #subText{
     font-family: 'Scheherazade New', serif;
@@ -39,17 +41,14 @@
 </style>
 <section class="ftco-section  ">
  
-  <div class="container "  id="categories_container" >
+  <div class="container  "  id="categories_container" >
     {{-- title dive --}}
-    <div class="row justify-content-center mb-5 pb-2 ">
-      <div class="col-md-8  heading-section ftco-animate" style="width:57% !important">
-        <h2 id="mainText" class="mb-2 mt-5"><strong> This is {{ $singleExam->title }} Exam, It contains {{ $singleExam->number_of_questions }} questions </strong></h2>
-        <h2 id="mainText2" class="px-5"> <strong> you have {{ $singleExam->time_estimation }} minutes to finish it </strong></h2>
-        {{-- <div class="page_link"> --}}
-          {{-- <a href="{{ route('index') }}">Home</a>
-          <a href="{{ route('show_categories') }}">/ categories</a> --}}
-                {{-- <a href={{ route('single_exam',$singleExam->id) }}>/ {{ $singleExam->title }}</a> --}}
-        {{-- </div> --}}
+    <div class="row justify-content-center mb-3 pb-1 px-5 ">
+      <div class="d-flex justify-content-center col-10">
+      <div class="col-md-9  heading-section ftco-animate" style="width:57% !important">
+        <h3 id="mainText" class="mb-2 mt-5"> This is <strong>{{ $singleExam->title }} </strong>Exam, It contains <strong>{{ $singleExam->number_of_questions }} </strong> questions </h3>
+        <h3 id="mainText2" class="px-5">  you have <strong>{{ $singleExam->time_estimation }} </strong>minutes to finish it </h3>
+      </div>
       </div>
     </div>
 
@@ -60,10 +59,9 @@
         @csrf
 
         @foreach ($singleExam->question as $question)
-        <div class="col-md-8 col-sm-10 mb-2 " style="max-width: fit-content; overflow:hidden">
-          <div class="card" style="width: 45rem; ">
+        <div class="col-md-9 col-sm-10 mb-2 m-auto" style="max-width:fit-content; overflow:hidden">
+          <div class="card" style="width: 65rem; ">
             <div class="card-body ">
-           {{--  <input type="hidden" name="question_id" value="{{ $question->id }}">  --}}
 
             <h5 class="card-title"> <strong>{{$question->number}})</strong> {{ $question->text }}</h5>
     
@@ -76,7 +74,7 @@
           </div>
         @endforeach
         
-         <div class="d-flex justify-content-end mt-2" style="margin-right: 18%;">
+         <div class="d-flex justify-content-end mt-2" style="margin-right: 12.5%;">
           <button id="submit-exam" class="btn px-5" 
           >Finish </button></div>
           </form>
