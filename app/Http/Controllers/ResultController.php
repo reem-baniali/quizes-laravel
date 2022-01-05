@@ -14,7 +14,9 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        $results=Result::all();
+        // dd($result);
+        return view('publicSite.profile',compact('results'));
     }
 
     /**

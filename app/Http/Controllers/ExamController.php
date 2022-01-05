@@ -167,4 +167,15 @@ class ExamController extends Controller
         $exam->delete();
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title and body columns from the owner table
+        $exam = Exam::query()
+            ->where('title', 'LIKE', "%{$search}%")->get();
+
+        return view('publicSite.search', compact('exam'));
+    }
 }

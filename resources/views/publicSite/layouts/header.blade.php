@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
   
+    <style>
+      .search-image {
+ padding-right:35px;
+  background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat right;
+  background-size: 20px;
+  background-position-x: 95%
+}
+#navs{
+  margin-right: 5%
+}
+    </style>
   </head>
   <body >
     
@@ -26,23 +37,20 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+        <div class="collapse navbar-collapse flex-grow-0" id="navbarNav" style="margin-left: 46% !important;">
            <ul class="navbar-nav">
            <li class="nav-item">
               <a class="nav-link" aria-current="page" href="{{ route('show_categories') }}">
-                Categories
+                Exams
               </a>
             </li>
              </ul>
-                 <ul class="navbar-nav">
+                 <ul id="navs"class="navbar-nav ">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="{{ route('contact') }}">
-                Contact Us
+                Contacts
               </a>
             </li>
-            {{-- <li class="nav-item home-btn-login">
-              <a class="nav-link login-link" href="{{ route('login') }}">Log in</a>
-            </li> --}}
               @guest
                             @if (Route::has('login'))
                                 <li class="nav-item home-btn-login">
@@ -60,11 +68,15 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" 
+                                role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
+                                    
                                 </a>
+                                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile',Auth::user()->id) }}">Profile</a> 
+                                                             
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -76,6 +88,10 @@
                                     </form>
                                 </div>
                             </li>
+                         
+                             
+                          
+                
                             @if ( Auth::user()->role_id == 1 )
                         
                          <li class="nav-item home-btn-login">
@@ -83,7 +99,18 @@
                                 </li>
                                  @endif
                         @endguest
-                        
+                 </ul>
+<ul  class="navbar-nav ml-5">
+          {{-- search part --}}
+          <li id="search-input" class="nav-item dropdown">
+          <form action="{{ route('search') }}" method="get" class="searchform order-lg-last">
+        {{-- @csrf --}}
+        <div class="form-group d-flex">
+          <input type="text" class="search-image form-control " name="search" value placeholder="Search" required>
+        </div>
+      </form>
+      {{-- End Searh part --}}
+           </li>  
           </ul>
         </div>
       </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
@@ -83,6 +84,8 @@ Route::get("/show_categories", [CategoryController::class,'index'])->name('show_
 Route::get('/category_show/{id}', [ExamController::class, 'show'])->name('single_category');
 Route::get('/exam_show/{id}', [ExamController::class, 'index'])->name('single_exam')->middleware('auth');
 Route::post('/user_answer/{id}', [AnswerController::class, 'store'])->name('answer.store');
+Route::get('/search', [ExamController::class, 'search'])->name('search');
+Route::get('/profile/{id}', [ResultController::class,'index'])->name('profile');
 
 
 //category route

@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="../css/bootstrap.css" />
     <link rel="stylesheet" href="../css/all.min.css" />
     <link rel="stylesheet" href="../css/contact.css" />
+     <style>
+      #search-image {
+ padding-right:35px;
+  background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat right;
+  background-size: 20px;
+  background-position-x: 95%
+}
+/* #navs{
+  margin-right: 5%
+} */
+    </style>
   </head>
   <body>
     <link
@@ -49,9 +60,21 @@
                 Home
               </a>
             </li>
-            <li class="nav-item home-btn-login">
-              <a class="nav-link loginBtn" href="signup.html">Log in</a>
+            <li class="nav-item home-btn-login ">
+              <a class="nav-link loginBtn px-3 " href="{{ route('login') }}">Log in</a>
             </li>
+          </ul>
+          <ul  class="navbar-nav mt-3 ml-5">
+          {{-- search part --}}
+          <li id="search-input" class="nav-item dropdown">
+          <form action="{{ route('search') }}" method="get" class="searchform order-lg-last">
+        {{-- @csrf --}}
+        <div class="form-group d-flex">
+          <input type="text" id="search-image" class=" form-control " name="search" value placeholder="Search" required>
+        </div>
+      </form>
+      {{-- End Searh part --}}
+           </li>  
           </ul>
         </div>
       </div>
@@ -162,5 +185,6 @@
     </footer>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/contact.js"></script>
+    
   </body>
 </html>

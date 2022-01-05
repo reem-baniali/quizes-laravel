@@ -38,17 +38,13 @@
   #start-exam:hover{
     background-color: #ff8c00;
   }
-
+  .page-title{
+    padding-left: 10.5%
+  }
 </style>
-<section class="ftco-section  ">
- 
-  <div class="container"  id="categories_container" >
-    {{-- title dive --}}
-    <div class="row justify-content-center mb-5 pb-2">
-      <div class="col-md-8  heading-section ftco-animate  ml-3" style="width:57% !important">
-        <h3 id="mainText" class="mb-2 mt-5 "><span>All</span> Exams</h3>
-        {{--<p>Separated they live in. A small river named Duden flows by their place
-          and supplies it with the necessary regelialia. It is a paradisematic country</p> --}}
+    <div class="page-title row justify-content-start mb-5 pb-2 ">
+      <div class="col-md-8  heading-section ftco-animate  ">
+        <h4 id="mainText" class="mb-2  mt-3"><strong>All</strong> Exams</h4>
         <div class="page_link">
           <a href="{{ route('index') }}">Home</a>
           <a href="{{ route('show_categories') }}">/ Exams</a>
@@ -56,6 +52,10 @@
       </div>
 
     </div>
+ 
+  <div class="container"  id="categories_container" >
+    {{-- title dive --}}
+
     <div class="row">
 
       {{-- start aside div - top categories --}}
@@ -71,7 +71,7 @@
                 @foreach ($categories as $category)
                 <li class="category-title page_link" style="font-size:18px">
                   <a href="{{ route('single_category',$category->id )}}">
-                    {{ $category->name }} Exams</a>
+                    {{ $category->name }} </a>
                 </li>
                 @endforeach
               </ul>
@@ -89,8 +89,8 @@
             <img height="150px" src="{{asset($exam->image )}}" class="card-img-top" alt="exam-image">
             <div class="card-body">
               <h5 class="card-title">{{ $exam->title }}</h5>
-              <p class="card-text text-truncate">{{ $exam->time_estimation }}</p>
-              <p class="card-text text-truncate">{{ $exam->number_of_questions }}</p>
+             <p> This exam need  {{ $exam->time_estimation }} minutes to solve it, and it contains {{ $exam->number_of_questions }} questions </p>
+
               <a href="{{ route('single_exam', $exam->id ) }}" id="start-exam" class="btn ">Get Started</a>
             </div>
           </div>
@@ -108,7 +108,6 @@
   </div>
   </div>
 
-</section>
 
 
 @endsection

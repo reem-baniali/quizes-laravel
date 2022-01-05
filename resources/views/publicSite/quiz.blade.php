@@ -13,12 +13,7 @@
     margin-bottom: 20px;
      
   }
-  #subText{
-    font-family: 'Scheherazade New', serif;
-    color: #20325a;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
+
    .page_link>a{
      text-decoration: none;
      color:#20325a;
@@ -37,20 +32,21 @@
   #submit-qustion,#submit-exam:hover{
     background-color: #ff8c00;
   }
+   .page-title{
+    padding-left: 22%
+  }
 
 </style>
-<section class="ftco-section  ">
- 
+ <div class="page-title row justify-content-start mb-1 pb-2 ">
+      <div class="col-md-12  heading-section ftco-animate pb-2 ">
+      <div class="col-md-9  heading-section ftco-animate" >
+        <h4 id="mainText" class="mb-2 mt-5"> This is <strong>{{ $singleExam->title }} </strong>Exam, It contains
+           <strong>{{ $singleExam->number_of_questions }} </strong> questions. you have 
+           <strong>{{ $singleExam->time_estimation }} </strong>minutes to finish it. </h4>
+      </div>
+      </div>
+    </div> 
   <div class="container  "  id="categories_container" >
-    {{-- title dive --}}
-    <div class="row justify-content-center mb-3 pb-1 px-5 ">
-      <div class="d-flex justify-content-center col-10">
-      <div class="col-md-9  heading-section ftco-animate" style="width:57% !important">
-        <h3 id="mainText" class="mb-2 mt-5"> This is <strong>{{ $singleExam->title }} </strong>Exam, It contains <strong>{{ $singleExam->number_of_questions }} </strong> questions </h3>
-        <h3 id="mainText2" class="px-5">  you have <strong>{{ $singleExam->time_estimation }} </strong>minutes to finish it </h3>
-      </div>
-      </div>
-    </div>
 
     <div class="row">
       {{-- main content --}}
@@ -90,7 +86,7 @@
   </div>
   </div>
 
-</section>
+
 
 
 @endsection
