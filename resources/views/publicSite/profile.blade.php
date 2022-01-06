@@ -26,7 +26,7 @@
                                     
                                     <tr>
                                         {{-- <th> Exam Number</th> --}}
-                                        <th> Exam Title</th>
+                                        <th> Your Exams </th>
                                         <th> Your Result </th>
                                         
                                     </tr>
@@ -40,7 +40,7 @@
                                                 
                                            
                                             <td>{{  $result->exam->title }}</td>
-                                            <td>{{  $result->result  }}</td>
+                                            <td>{{  $result->result  }} / {{  $result->exam->title }}</td>
                                             
                                              @endif
                                              @endforeach            

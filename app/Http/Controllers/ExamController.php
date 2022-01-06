@@ -60,7 +60,8 @@ class ExamController extends Controller
             'title'              =>'required|max:1500',
             'time_estimation'    =>'required|max:11',
             'number_of_questions'=>'required|max:11',
-            'image'=>'required|mimes:jpeg,png,gif,jpg'
+            'image'=>'required|mimes:jpeg,png,gif,jpg',
+            'mark'=>'required'
 
         ]);
            if($request->hasFile('image')){
@@ -77,6 +78,7 @@ class ExamController extends Controller
             'title'               =>$request->title,
             'image'               =>'storage/category_images/'.$new_file,
             'time_estimation'     =>$request->time_estimation,
+            'mark'                =>$request->mark,
             'number_of_questions' =>$request->number_of_questions,
             'category_id'         =>$request->category_id
             

@@ -37,7 +37,7 @@
                                  <td>{{ $result->user_id  }}</td>
                                  <td>{{ $result->user->name  }} </td>
                                  <td>{{ $result->exam->title  }}</td>
-                                 <td>{{ $result->result  }} </td>
+                                 <td>{{ $result->result }} / {{ $result->exam->mark }}</td>
                                  <td>{{ $result->created_at  }} </td>
                                                    
                               {{-- <td>

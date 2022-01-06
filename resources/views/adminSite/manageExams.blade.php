@@ -88,6 +88,17 @@
                                                         value="@if($update == true){{ $exam->time_estimation }}@endif">
                                                     </div>
                                                 </div>
+                                                    <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-plus"></i>
+                                                        </div>
+                                                        <input type="number" id="exam_mark" 
+                                                        name="mark"  class="form-control"
+                                                        placeholder="total mark"
+                                                        value="@if($update == true){{ $exam->mark }}@endif">
+                                                    </div>
+                                                </div>
                                                 <div class="form-actions form-group d-flex justify-content-end">
                                                     @if ($update == false)
                                                     <button type="submit" name="add_exam" 
@@ -117,6 +128,7 @@
                                         <th>Exam Image</th>
                                         <th>Exam Title</th>
                                         <th>Number of Qustions</th>
+                                        <th>Total Mark</th>
                                         <th>Time Estimation</th>
                                         <th></th>
                                      
@@ -134,6 +146,7 @@
                                            <td><img src="{{ asset( $exam->image )}}" alt="exam-img" width="70px"></td>
                                             <td>{{ $exam->title }}</td>
                                             <td>{{ $exam->number_of_questions }} questions</td>
+                                            <td>{{ $exam->mark }} marks</td>
                                             <td>{{ $exam->time_estimation }} minutes</td>
 
                                                      <td>

@@ -18,6 +18,7 @@ class CreateExamsTable extends Migration
             $table->string('title');
             $table->text('image');
             $table->string('time_estimation');
+            $table->integer('mark');
             $table->integer('number_of_questions');
             $table->foreignId('category_id')
                   ->nullable()
