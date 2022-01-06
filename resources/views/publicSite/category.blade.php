@@ -40,6 +40,8 @@
     padding-left: 10.5%
   }
 
+
+
 </style>
 <div class="page-title row justify-content-start ">
 <div class="col-md-8  heading-section ftco-animate pb-5" >
@@ -78,12 +80,12 @@
 {{-- End aside div --}}
 
 {{-- main content --}}
- 
 <div class="col-10 d-flex justify-content-center flex-wrap gap-5 m-auto">
          @foreach ($singleCategory->exam as $exam)
-         <div class="col-md-3 col-sm-8 mb-2 " style="max-width: fit-content; overflow:hidden">
+         <div class="col-md-3 col-sm-8 mb-2 " style="max-width:fit-content; overflow:hidden">
           <div class="card" style="width: 16rem; ">
-            <img height="200px" width="200px" src="{{asset($exam->image )}}" class="card-img-top justify-content-center m-auto" alt="exam-image">
+            <img height="200px" width="200px" src="{{asset($exam->image )}}" 
+            class="card-img-top justify-content-center m-auto" alt="exam-image">
             <div class="card-body">
               <h5 class="card-title">{{ $exam->title }}</h5>
              <p> This exam need  {{ $exam->time_estimation }} minutes to solve it, and it contains {{ $exam->number_of_questions }} questions, The result out of {{ $exam->mark }} </p>
