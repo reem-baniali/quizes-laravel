@@ -48,7 +48,8 @@ class ResultController extends Controller
      */
     public function show(Result $result)
     {
-        //
+        $results=Result::all();
+        return view('adminSite.manageResults',compact('results'));
     }
 
     /**

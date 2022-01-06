@@ -7,6 +7,7 @@ use App\Http\Controllers\ResultController;
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -51,13 +52,6 @@ Route::get('/publicQuize', function () {
 Route::get('/admin', function () {
     return view('adminSite.index');
 })->name('admin-site');
-Route::get('/admin/manageAdmin', function () {
-    return view('adminSite.manageAdmins');
-})->name('manageAdmin');
-
-Route::get('/admin/manageUsers', function () {
-    return view('adminSite.manageUsers');
-})->name('manageUsers');
 
 Route::get('/admin/manageExams', function () {
     return view('adminSite.manageExams');
@@ -137,3 +131,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//user routes
+Route::get('add_user',[RoleController::class, 'create']);
+Route::post('store_user',[RoleController::class, 'store'])->name('role.store');
+Route::get('user',[RoleController::class, 'index'])->name('manageUser');
+Route::get("edit_user/{id}", [RoleController::class, 'edit'])->name('role.edit');
+Route::post("update_user/{id}", [RoleController::class, 'update'])->name('role.update');
+Route::get("delete_user/{id}", [RoleController::class, 'destroy'])->name('role.delete');
+
+Route::get('result_backend',[ResultController::class, 'show'])->name('manageResult');

@@ -38,7 +38,7 @@
 
 </style>
  <div class="page-title row justify-content-start mb-1 pb-2 ">
-      <div class="col-md-12  heading-section ftco-animate pb-2 ">
+      <div class="col-md-12 col-sm-6  heading-section ftco-animate pb-2 ">
       <div class="col-md-9  heading-section ftco-animate" >
         <h4 id="mainText" class="mb-2 mt-5"> This is <strong>{{ $singleExam->title }} </strong>Exam, It contains
            <strong>{{ $singleExam->number_of_questions }} </strong> questions. you have 
@@ -55,7 +55,7 @@
         @csrf
 
         @foreach ($singleExam->question as $question)
-        <div class="col-md-9 col-sm-10 mb-2 m-auto" style="max-width:fit-content; overflow:hidden">
+        <div class="col-md-9 col-sm-6 mb-2 m-auto" style="max-width:fit-content; overflow:hidden">
           <div class="card" style="width: 65rem; ">
             <div class="card-body ">
 

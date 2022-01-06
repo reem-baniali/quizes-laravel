@@ -60,9 +60,9 @@
                 Home
               </a>
             </li>
-            <li class="nav-item home-btn-login ">
+            {{-- <li class="nav-item home-btn-login ">
               <a class="nav-link loginBtn px-3 " href="{{ route('login') }}">Log in</a>
-            </li>
+            </li> --}}
           </ul>
           <ul  class="navbar-nav mt-3 ml-5">
           {{-- search part --}}

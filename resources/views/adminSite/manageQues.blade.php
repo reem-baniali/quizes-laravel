@@ -145,6 +145,9 @@
                       
 
                         <!-- DATA TABLE-->
+                                            <div class="top-campaign col-12 m-auto">
+                                <h3 class="title-3 m-b-30">Questions</h3>
+                                <div class="table-responsive m-b-40">
                         <div class="table-responsive m-b-40">
                             <table class="table table-borderless table-data3">
                                 <thead>
@@ -205,5 +208,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            </div>
             </div>
 @endsection

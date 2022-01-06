@@ -14,21 +14,20 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                            <form method="post">
-                                        <button type="submit" name="back" class="btn btn-success btn-sm ">
-                                                   back</button>
-                                        </form>
                                 <div class="card">
                                     <div class="card-header">Manage Users</div>
                                     <div class="card-body card-block">
                                    
-                                        <form method="post" enctype="multipart/form-data">
+                                        <form action="@if($update==false){{ route('role.store') }} @else 
+                                        {{ route('role.update',$user->id) }} @endif" method="post" >
+                                        @csrf
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-user"></i>
                                                     </div>
-                                                    <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                                                    <input type="text" id="username" name="name" placeholder="User name" 
+                                                    class="form-control"  value="@if ($update == true) {{ $user->name }} @endif">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -36,109 +35,98 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-envelope"></i>
                                                     </div>
-                                                    <input type="email" id="email" name="email" placeholder="Email" class="form-control">
+                                                    <input type="email" id="email" name="email" placeholder="User Email" 
+                                                    class="form-control"  value="@if ($update == true) {{ $user->email }} @endif">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+          
+                                              <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-asterisk"></i>
                                                     </div>
-                                                    <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                                                    <input type="password" id="password" name="password" 
+                                                    placeholder="Password" class="form-control text-break"
+                                                    value="@if ($update == true) {{ $user->password }} @endif">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                            <input type="file" name="fileToUpload" id="fileToUpload" class="form-control">
-                                            </div>
-                                            <div class="form-actions form-group">
-                                                <button type="submit" name="submit" class="btn btn-success btn-sm ">Add New User</button>
-                                            </div>
+                      <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon">
+                                                            <i class="fas fa-caret-down"></i>
+                                                        </div>
+                                                        <select name="role_id" class="form-control" >
+                                                        <option value="2" selected>Select Role</option>
+                                                        <option value="1"> Admin </option>
+                                                          <option value="2"> User </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            
+                                           
+                                           <div class="form-actions form-group d-flex justify-content-end">
+                                                    @if ($update == false)
+                                                    <button type="submit" name="add_user" 
+                                                    class="btn btn-primary btn-md" 
+                                                    style="background: #4272d7;">Add User </button>
+                                                    @else 
+                                                     <button type="submit" name="update_user" 
+                                                    class="btn btn-primary btn-md" 
+                                                    style="background: #4272d7;">Update User </button> 
+                                                     @endif
+                                                </div>
                                         </form>
-                                    {{-- <div class="card-header">UPDATE</div>
-                                    <div class="card-body card-block">
-                                   
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-user"></i>
-                                                    </div>
-                                                    <input type="text" id="username" name="username"
-                                                     placeholder="Username" class="form-control"
-                                                     value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-envelope"></i>
-                                                    </div>
-                                                    <input type="email" id="email" name="email" placeholder="Email"
-                                                     class="form-control" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-asterisk"></i>
-                                                    </div>
-                                                    <input type="password" id="password"
-                                                     name="password" placeholder="Password"
-                                                      class="form-control" value="">
-                                                </div>
-                                            </div>
-                                            <div class="form-actions form-group">
-                                                <button type="submit" name="update" class="btn btn-success btn-sm ">
-                                                   Update</button>
-                                                  
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div> --}}
 
+                                          </div>
+                                </div>
                                 <!-- DATA TABLE-->
+                                  <div class="top-campaign col-12 m-auto">
+                                <h3 class="title-3 m-b-30">Users</h3>
+                                <div class="table-responsive m-b-40">
                                 <div class="table-responsive m-b-40">
                                     <table class="table table-borderless table-data3">
                                         <thead>
                                             <tr>
-                                                <th>Admin ID</th>
+                                                <th>User ID</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Login Date</th>
-                                                <th>Admin Image</th>
+                                                {{-- <th>Password</th> --}}
+                                                <th>Role</th>
                                                 <th></th>
-                                                <th></th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
-                                   
+                                   @foreach ($users as $user )
+                                       
+                                 
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td><img src=" admin/uploads/" alt=""></td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <a href="manageAdmins.php?edit=">
-                                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                    <i class="zmdi zmdi-edit"></i>
-                                                                </button>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <a href="manageAdmins.php?delete= ">
-                                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                    <i class="zmdi zmdi-delete"></i>
-                                                                </button>
-                                                            </a>
-                                                        </div>
-                                                    </td>
+                                                    <td>{{ $user->id }}</td>
+                                                    <td class="col-3">{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    {{-- <td>{{ $user->password }}</td> --}}
+                                                    @if ($user->role_id == 1)
+                                                       <td style="color: red;font-weight:700"> Admin </td> 
+                                                       @else 
+                                                       <td > User </td> 
+                                                    @endif
+                                                   
+                                                  
+                                                            <td>
+                                <div class="table-data-feature d-flex justify-content-end">
+                                    <a href="{{ route('role.edit',$user->id) }}"> <button class="item btn btn-success"
+                                         data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i></a>
+                                    </button>
+                                    <a href="{{ route('role.delete',$user->id) }}"> <button class="item btn btn-danger" 
+                                        data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i></a>
+                                    </button>
+
+                                </div>
+                            </td>
                                                 </tr>
+                                                  @endforeach
                                         </tbody>
 
                                     </table>
@@ -147,7 +135,8 @@
                             </div>
                         </div>
                     </div>
-
-
+   </div>
+                    </div>
+ </div>
 
 @endsection

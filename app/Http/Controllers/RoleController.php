@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -13,8 +14,10 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {       
+     $users=User::all(); 
+     $update=false;  
+     return view('adminSite.manageUsers',compact('users','update'));
     }
 
     /**
@@ -24,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminSite.manageUsers');
     }
 
     /**
@@ -35,7 +38,21 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($request,[
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'password'=>'required',
+        //     'role_id'=>'required',
+        // ]);
+
+        User::create([
+            'name'     =>$request->name,
+            'email'    =>$request->email,
+            'password' =>$request->password,
+            'role_id' =>$request->role_id,
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -55,9 +72,12 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(Role $role,$id)
     {
-        //
+       $user=User::find($id);
+       $update=true;
+       $users=User::all();
+       return view('adminSite.manageUsers',compact('user','update','users'));
     }
 
     /**
@@ -67,9 +87,24 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Role $role,$id)
     {
-        //
+        $user=User::find($id);
+        // $this->validate($request,[
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'password'=>'required',
+        //     'role_id'=>'required',
+        // ]);
+        
+        $user->name     = $request->name;
+        $user->email    = $request->email;
+        $user->password = $request->password;
+        $user->role_id  = $request->role_id;
+
+        $user->update();
+
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +113,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($request)
     {
-        //
+        $user=User::find($request);
+        $user->delete($request);
+
+        return redirect()->back();
     }
 }

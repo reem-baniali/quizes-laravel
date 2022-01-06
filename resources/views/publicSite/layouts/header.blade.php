@@ -88,19 +88,15 @@
                                     </form>
                                 </div>
                             </li>
-                         
-                             
-                          
-                
                             @if ( Auth::user()->role_id == 1 )
                         
                          <li class="nav-item home-btn-login">
-                                    <a class="nav-link" href="{{ route('admin-site') }}"> Admin Site </a>
+                                    <a class="nav-link" href="{{ route('admin-site') }}"> Admin </a>
                                 </li>
                                  @endif
                         @endguest
                  </ul>
-<ul  class="navbar-nav ml-5">
+   <ul  class="navbar-nav ">
           {{-- search part --}}
           <li id="search-input" class="nav-item dropdown">
           <form action="{{ route('search') }}" method="get" class="searchform order-lg-last">

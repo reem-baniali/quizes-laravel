@@ -14,7 +14,8 @@
                                     <div class="card">
                                     <div class="card-header">Manage Catigories</div>
                                     <div class="card-body card-block">
-                                        <form action="@if($update==false){{ route('category.store') }} @else {{ route('category.update',$category->id) }}@endif" 
+                                        <form action="@if($update==false){{ route('category.store') }} @else 
+                                        {{ route('category.update',$category->id) }} @endif " 
                                         method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group ">

@@ -10,6 +10,9 @@
     background-color: #ff8c00;
 
   }
+  /* #subText{
+    margin-bottom: 10%;
+  } */
   .page_link>a{
      text-decoration: none;
      color:#20325a;
@@ -21,7 +24,7 @@
     color: #ff8c00;
 
   }
-    #mainText {
+    #mainText,#subText {
     font-family: 'Scheherazade New', serif;
     color: #20325a;
     font-size: 35px;
@@ -47,11 +50,11 @@
 
 <div class="search-container   ">
       <div class="row d-flex justify-content-center " >
-        <div class="col-6 d-flex justify-content-center flex-wrap gap-3" >
+        <div class="row col-9 d-flex justify-content-center flex-wrap gap-5" >
 
 @if($exam->isNotEmpty())
     @foreach ($exam as $item)
-    <div class=" card search-card" style="width:16rem;" >
+    <div class=" col-6 card search-card" style="width:16rem;" >
                 <img height="150px" src="{{ asset($item->image) }}" class="card-img-top" alt="company-logo">
                 <div class="card-body">
                   <h5 class="card-title"><strong>{{ $item->title }}</strong></h5>
@@ -66,9 +69,9 @@
 
 
 @else 
-    <div>
+    <div style="height: 17rem">
 
-        <h2>No Result!</h2>
+        <h2 id="subText">No Result Found!</h2>
     </div>
 @endif
 

@@ -105,6 +105,9 @@
                       
 
                         <!-- DATA TABLE-->
+                             <div class="top-campaign col-12 m-auto">
+                                <h3 class="title-3 m-b-30">Exams</h3>
+                                <div class="table-responsive m-b-40">
                         <div class="table-responsive m-b-40">
                             <table class="table table-borderless table-data3">
                                 <thead>
@@ -128,7 +131,7 @@
                                           <td> {{ $category->name }}</td>
                                           @endif
                                            @endforeach
-                                           <td><img src="{{ asset( $exam->image )}}" alt="exam-img"></td>
+                                           <td><img src="{{ asset( $exam->image )}}" alt="exam-img" width="70px"></td>
                                             <td>{{ $exam->title }}</td>
                                             <td>{{ $exam->number_of_questions }} questions</td>
                                             <td>{{ $exam->time_estimation }} minutes</td>
@@ -156,6 +159,8 @@
                         <!-- END DATA TABLE-->
                         </div>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
 @endsection
