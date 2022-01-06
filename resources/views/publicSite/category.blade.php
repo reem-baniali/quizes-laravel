@@ -83,10 +83,10 @@
          @foreach ($singleCategory->exam as $exam)
          <div class="col-md-3 col-sm-8 mb-2 " style="max-width: fit-content; overflow:hidden">
           <div class="card" style="width: 16rem; ">
-            <img height="150px" src="{{asset($exam->image )}}" class="card-img-top" alt="exam-image">
+            <img height="200px" width="200px" src="{{asset($exam->image )}}" class="card-img-top justify-content-center m-auto" alt="exam-image">
             <div class="card-body">
               <h5 class="card-title">{{ $exam->title }}</h5>
-             <p> This exam need  {{ $exam->time_estimation }} minutes to solve it, and it contains {{ $exam->number_of_questions }} questions </p>
+             <p> This exam need  {{ $exam->time_estimation }} minutes to solve it, and it contains {{ $exam->number_of_questions }} questions, The result out of {{ $exam->mark }} </p>
 
               <a href="{{ route('single_exam', $exam->id ) }}" id="start-exam" class="btn ">Get Started</a>
             </div>

@@ -58,6 +58,7 @@
 
     <div class="row">
 
+
       {{-- start aside div - top categories --}}
       <div class="col-lg-2" style="border-right: solid .5px rgb(194, 194, 194)">
         <div class="left_sidebar_area">
@@ -80,34 +81,36 @@
         </div>
       </div>
       {{-- End aside div --}}
+       
 
       {{-- main content --}}
-      <div class="col-10 d-flex justify-content-center flex-wrap gap-5 m-auto">
-        @foreach ($exams as $exam)
-        <div class="col-md-3 col-sm-8 mb-2 " style="max-width: fit-content; overflow:hidden">
-          <div class="card" style="width: 16rem; ">
-            <img height="150px" src="{{asset($exam->image )}}" class="card-img-top" alt="exam-image">
+<div class="col-10 d-flex justify-content-center flex-wrap gap-5 m-auto">
+ @foreach ($exams as $exam)
+          <div class="col-md-3 col-sm-8 mb-2 " style="max-width: fit-content; overflow:hidden">
+          <div class="card" style="width: 16rem;  ">
+            <img height="200px" width="200px" src="{{asset($exam->image )}}" class="card-img-top justify-content-center m-auto" alt="exam-image">
             <div class="card-body">
               <h5 class="card-title">{{ $exam->title }}</h5>
-             <p> This exam need  {{ $exam->time_estimation }} minutes to solve it, and it contains {{ $exam->number_of_questions }} questions </p>
+             <p> This exam need  {{ $exam->time_estimation }} minutes to solve it, and it contains {{ $exam->number_of_questions }} questions, The result out of {{ $exam->mark }} </p>
 
               <a href="{{ route('single_exam', $exam->id ) }}" id="start-exam" class="btn ">Get Started</a>
             </div>
           </div>
         </div>
         @endforeach
-      </div>
+   
+     </div>
     </div>
     {{-- end main content --}}
     {{-- pagination part --}}
-    <div style="justify-content: center; 
-    margin-left:50%;margin-top:5%;margin-bottom:5%">
-      {!! $exams->links() !!}
-    </div>
+   
     {{-- end pagination part --}}
   </div>
   </div>
 
-
+ <div style="justify-content: center; 
+    margin-left:50%;margin-top:5%;margin-bottom:5%">
+      {!! $exams->links() !!}
+    </div>
 
 @endsection
