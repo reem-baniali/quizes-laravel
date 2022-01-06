@@ -14,8 +14,8 @@
                 <h5 style="color: #404d68" class="title-3 m-b-30 ">Your Result <strong>{{$user_score_per_question}} </strong> 
                                             Out of <strong> {{ $final_exam_score }} </strong>
                                             @if ($is_pass == 1)
-                                              <strong style="color: rgb(19, 218, 19);">  Congrrats You passed the exam!  </strong>
-                                               <strong style="color: rgb(207, 5, 5);">Hard Luck, Try again! </strong> 
+                                           <strong style="color: rgb(19, 218, 19);">  Congrrats You passed the exam!  </strong>
+                                                @else  <strong style="color: rgb(207, 5, 5);">Hard Luck, Try again! </strong> 
                                             @endif
                 </h5>
                         <div class="table-responsive m-b-40">
