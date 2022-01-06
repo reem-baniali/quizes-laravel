@@ -28,6 +28,7 @@
                                         {{-- <th> Exam Number</th> --}}
                                         <th> Your Exams </th>
                                         <th> Your Result </th>
+                                        <th> Exam time </th>
                                         
                                     </tr>
                                 </thead>
@@ -40,7 +41,8 @@
                                                 
                                            
                                             <td>{{  $result->exam->title }}</td>
-                                            <td>{{  $result->result  }} / {{  $result->exam->title }}</td>
+                                            <td>{{  $result->result  }} / {{  $result->exam->mark }}</td>
+                                            <td>{{  $result->created_at }}</td>
                                             
                                              @endif
                                              @endforeach            

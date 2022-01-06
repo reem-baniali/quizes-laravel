@@ -55,16 +55,16 @@
         @csrf
 
         @foreach ($singleExam->question as $question)
-        <div class="col-md-9 col-sm-6 mb-2 m-auto" style="max-width:fit-content; overflow:hidden">
+        <div class="col-md-9 col-sm-6 mb-2 m-auto text-break" style="max-width:fit-content; overflow:hidden">
           <div class="card" style="width: 65rem; ">
             <div class="card-body ">
 
-            <h5 class="card-title"> <strong>{{$question->number}})</strong> {{ $question->text }}</h5>
+            <h5 class="card-title text-break " style="max-width:75%"> <strong >{{$question->number}})</strong> {{ $question->text }}</h5>
     
-            <div class="px-4 mb-2"><input  type="radio" value="{{ $question->option1 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option1 }}</span></div>
-            <div class="px-4 mb-2"><input  type="radio" value="{{ $question->option2 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option2 }}</span></div>
-            <div class="px-4 mb-2"><input  type="radio" value="{{ $question->option3 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option3 }}</span></div>
-            <div class="px-4 mb-2"><input  type="radio" value="{{ $question->option4 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option4 }}</span></div>
+            <div class="px-4 " style="max-width:75%; margin-bottom:.7%"  ><input  type="radio" value="{{ $question->option1 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option1 }}</span></div>
+            <div class="px-4 " style="max-width:75%; margin-bottom:.7%" ><input  type="radio" value="{{ $question->option2 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option2 }}</span></div>
+            <div class="px-4 " style="max-width:75%; margin-bottom:.7%" ><input  type="radio" value="{{ $question->option3 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option3 }}</span></div>
+            <div class="px-4 " style="max-width:75%; margin-bottom:.7%" ><input  type="radio" value="{{ $question->option4 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option4 }}</span></div>
           </div>
         </div>
           </div>

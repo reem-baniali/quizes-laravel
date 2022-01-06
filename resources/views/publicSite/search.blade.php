@@ -55,7 +55,7 @@
 @if($exam->isNotEmpty())
     @foreach ($exam as $item)
     <div class=" col-6 card search-card" style="width:16rem;" >
-                <img height="150px" src="{{ asset($item->image) }}" class="card-img-top" alt="company-logo">
+                <img height="200px" width="200px" src="{{ asset($item->image) }}" class="card-img-top m-auto" alt="company-logo">
                 <div class="card-body">
                   <h5 class="card-title"><strong>{{ $item->title }}</strong></h5>
                   <p> This exam need  {{ $item->time_estimation }} minutes to solve it, and it contains {{ $item->number_of_questions }} questions </p>
