@@ -59,7 +59,7 @@
           <div class="card" style="width: 65rem; ">
             <div class="card-body ">
 
-            <h5 class="card-title text-break " style="max-width:75%"> <strong >{{$question->number}})</strong> {{ $question->text }}</h5>
+            <h5 class="card-title text-break " style="max-width:75%"> <strong >{{$question->number}})  </strong><span style="color:#ff8c00">( {{ $question->points }} Points )  </span>{{ $question->text }}</h5>
     
             <div class="px-4 " style="max-width:75%; margin-bottom:.7%"  ><input  type="radio" value="{{ $question->option1 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option1 }}</span></div>
             <div class="px-4 " style="max-width:75%; margin-bottom:.7%" ><input  type="radio" value="{{ $question->option2 }}" name="{{ $question->id }}"><span style="margin-left: 1%;">{{ $question->option2 }}</span></div>
